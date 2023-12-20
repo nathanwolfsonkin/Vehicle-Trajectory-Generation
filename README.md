@@ -12,3 +12,5 @@ An kinematic car simulation that interactively defines the starting position, en
 - **Dynamic Model:** Future updates will introduce advanced features, including slip conditions and maximum steering angle saturation, to enhance the simulation's realism and accuracy.
 
 - **Control Systems:** Upcoming versions will incorporate advanced control features, further refining the simulation accuracy and providing a more comprehensive experience.
+
+https://github.com/Nathan7577/Car-Trajectory/assets/140115590/db2046ec-c32e-47c6-96a3-29556848a47a
