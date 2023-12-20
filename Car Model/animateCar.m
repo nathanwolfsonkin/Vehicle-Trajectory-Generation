@@ -1,6 +1,7 @@
-function [] = animateCar(xTraj,yTraj,theta0,time,fig,xDesired,yDesired,plotPath)
+function [] = animateCar(xTraj,yTraj,theta0,time,fig,xDesired,yDesired,angleTraj)
 
 figure(fig);
+subplot(2,2,[1 3]);
 h=gca;h.LineWidth=2;h.FontSize=18;h.DataAspectRatio=[1,1,1];
 hold on;
 
@@ -14,17 +15,6 @@ if exist('xDesired','var') == 1 && exist('yDesired','var') == 1
     h=gca;h.LineWidth=2;h.FontSize=18;h.DataAspectRatio=[1,1,1];
     hold on;
 end
-
-%CALCULATE ANGLE AT EVERY POINT
-angleTraj = zeros(length(xTraj),1);
-for i = 1:length(xTraj) - 1
-    X = xTraj(i+1) - xTraj(i);
-    Y = yTraj(i+1) - yTraj(i);
-    angleTraj(i+1) = atan2(Y,X);
-end
-angleTraj(1) = theta0;
-
-% angleTraj = angleTraj + turnCommand;
 
 %ANIMATE CAR
 hold on;
@@ -61,12 +51,8 @@ car = polyshape([leftFront(1),rightFront(1),rightBack(1),leftBack(1)],...
                 [leftFront(2),rightFront(2),rightBack(2),leftBack(2)]);
 
 carPlot = plot(car,'FaceColor','red','EdgeColor','k','LineWidth',2,'FaceAlpha',1);
-% -----------------------------------------------------------------------------------------------------
-% carVel = plot([carCenter0(1) , carCenter0(1) + cos(angleTraj(1))], ...
-%               [carCenter0(2) , carCenter0(2) + sin(angleTraj(1))], ...
-%               'k','LineWidth',2);
 carPath = plot(xTraj(1),yTraj(1),'k','LineWidth',2);
-for i = 2:length(xTraj)
+for i = 2:3:length(xTraj)
     if exist('plotPath','var')
         delete(desiredPos)
         desiredPos = plot(nsidedpoly(1000,'Center',[xDesired(i),yDesired(i)],'Radius',.1),'FaceColor','g','faceAlpha',1);
@@ -84,8 +70,6 @@ for i = 2:length(xTraj)
     temp = [rotLeftFront(1),rotLeftFront(2);rotRightFront(1),rotRightFront(2);...
             rotRightBack(1),rotRightBack(2);rotLeftBack(1),rotLeftBack(2)];
     carPlot.Shape.Vertices = temp;
-    %------------------------------------------------------------------------
-%     set(carVel,'xData',[carCenter(1) , carCenter(1) + cos(angleTraj(i))],'yData',[carCenter(2) , carCenter(2) + sin(angleTraj(i))])
     drawnow;
     pause(.001)
     title(['time: ' num2str(time(i))])

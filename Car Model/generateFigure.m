@@ -1,10 +1,10 @@
 function [fig,x0,y0,theta0,xf,yf,thetaf] = generateFigure()
 
 fig = figure;
+hold on;
 axisHandle=gca; axisHandle.LineWidth=2; axisHandle.DataAspectRatio=[1 1 1];
 xlim([-10,10])
 ylim([-10,10])
-hold on;
 
 title('Enter The Start Position')
 [x0,y0] = ginput(1);
