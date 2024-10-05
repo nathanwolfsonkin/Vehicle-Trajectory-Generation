@@ -1,5 +1,5 @@
-# Interactive Car Simulation
-An kinematic car simulation that interactively defines the starting position, ending position, and forward direction for the car's trajectory.
+# Interactive Car Model
+A kinematic car model that interactively defines the starting position, ending position, and forward direction for the car's trajectory.
 
 ## Key Features:
 - **User-Friendly UI:** The simulation boasts an intuitive interactive user interface, allowing users to specify the starting and ending positions, along with the desired direction for the car's trajectory.
